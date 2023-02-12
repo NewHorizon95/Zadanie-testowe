@@ -1,0 +1,23 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import time
+
+driver = webdriver.Chrome(executable_path=r"chromedriver.exe") ### ścieżka do chromedrivera. Generalnie powinniśmy zapisać w envach projektu.
+driver.maximize_window()
+driver.implicitly_wait(2)
+
+driver.get("https://app.bluealert.pl/ba/form/formularz-testowy")
+driver.find_element(By.ID, 'id_first_name').send_keys('Miś')
+driver.find_element(By.ID, 'id_last_name').send_keys('Uszatek')
+driver.find_element(By.ID, 'id_email').send_keys('mail@mail.com')
+driver.find_element(By.ID, 'id_phone').send_keys('123456789')
+driver.find_element(By.ID, 'id_pesel').send_keys('07093088496')
+driver.find_element(By.ID, 'id_id_numer').send_keys('ANH968663')
+driver.find_element(By.ID, 'id_date').send_keys('2013-02-02')
+driver.find_element(By.ID, 'id_date').send_keys(Keys.TAB)
+time.sleep(1)
+driver.find_element(By.ID, 'form_button_next').click()
+print('gotowe')
+time.sleep(60)
+exit()
